@@ -1,0 +1,63 @@
+imports                      :
+  thumpcc_base|requirements: ./
+  thumpcc_base|src_base    : ./src
+  thumpcc_python|src       : ./src/python
+  thumpcc_devops|src       : ./src/devops
+  thumpcc_misc|src         : ./src/misc
+  thumpcc_monitoring|src   : ./src/monitoring
+  thumpcc_networking|src   : ./src/networking
+  thumpcc_systems|src      : ./src/systems
+  thumpcc_web|src          : ./src/web
+
+# modules
+git module thumpcc_base      :
+  url      : https://github.com/thumpcc-submodules/base.git
+  recursive: false
+  drop     :
+    - .gitignore
+
+git module thumpcc_python    :
+  url      : https://github.com/thumpcc-submodules/python.git
+  recursive: false
+
+git module thumpcc_devops    :
+  url      : https://github.com/thumpcc-submodules/devops.git
+  recursive: false
+
+git module thumpcc_misc      :
+  url      : https://github.com/thumpcc-submodules/misc.git
+  recursive: false
+
+git module thumpcc_monitoring:
+  url      : https://github.com/thumpcc-submodules/monitoring.git
+  recursive: false
+
+git module thumpcc_networking:
+  url      : https://github.com/thumpcc-submodules/networking.git
+  recursive: false
+
+git module thumpcc_systems   :
+  url      : https://github.com/thumpcc-submodules/systems.git
+  recursive: false
+
+git module thumpcc_web       :
+  url      : https://github.com/thumpcc-submodules/web.git
+  recursive: false
+
+# Rules
+rule src                     :
+  drop:
+    - conf*.py
+    - README.md
+    - .gitignore
+    - .github
+    - peru.yaml
+
+rule src_base                :
+  pick:
+    - _var
+    - conf*.py
+
+rule requirements            :
+  pick:
+    - requirements.txt
